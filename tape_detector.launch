@@ -1,0 +1,17 @@
+<launch>
+    <!-- 摄像头节点（根据你的驱动改） -->
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
+        <param name="video_device" value="/dev/video0"/>
+        <param name="image_width" value="640"/>
+        <param name="image_height" value="480"/>
+        <param name="pixel_format" value="yuyv"/>
+        <param name="camera_frame_id" value="camera"/>
+        <param name="io_method" value="mmap"/>
+    </node>
+    
+    <!-- 色带检测节点 -->
+    <node name="tape_detector" pkg="your_package_name" type="tape_detector.py" output="screen"/>
+    
+    <!-- 可视化（可选） -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find your_package_name)/config/tape_detector.rviz"/>
+</launch>

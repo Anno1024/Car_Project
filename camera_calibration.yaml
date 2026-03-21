@@ -1,0 +1,25 @@
+# 相机标定参数 (自动生成)
+image_width: 640
+image_height: 480
+camera_name: camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [358.5353475150267, 0.0, 335.823333813027,
+         0.0, 356.84759399862867, 248.28811683073977,
+         0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.02147636651501032, 0.20645956985894923, -0.00011047742213541074, 0.0008110152155126046, -0.40722221713489304]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [358.5353475150267, 0, 335.823333813027, 0,
+         0, 356.84759399862867, 248.28811683073977, 0,
+         0, 0, 1, 0]
