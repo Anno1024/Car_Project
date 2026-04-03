@@ -11,3 +11,14 @@ hsv_tuner.py 请对比图片找到最适合的值域
 小车键盘控制：
 1 在树莓派上运行car_server.py
 2 在电脑上运行car_client.py
+
+里程计测试信息
+listen_serial.py  可以成功监听。
+
+
+driver.py       协议
+osometry.py     里程计信息
+vision.py       视觉
+main.py         主控，但是没写好，因该加入比例控制
+
+
