@@ -1,0 +1,52 @@
+map_name: path_map
+points:
+- theta: 0
+  x: 0
+  y: 0
+- theta: 0.05
+  x: 100
+  y: 5
+- theta: 0.03
+  x: 200
+  y: 8
+- theta: 0
+  x: 300
+  y: 10
+total_points: 4
+unit: mm
+visual_points:
+- Xr: !!python/object/apply:numpy.core.multiarray.scalar
+  - &id001 !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    rMzjkysSM8A=
+  Yr: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    NRI0gObpWMA=
+  theta: 0
+  u: 320
+  v: 240
+- Xr: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    9ngrr3QfP8A=
+  Yr: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    QEDI1tXpWMA=
+  theta: 0
+  u: 310
+  v: 240

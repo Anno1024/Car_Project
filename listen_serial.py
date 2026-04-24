@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+
+
+'''
+用于测试是否能够接收到小车的数据包
+'''
+
+
 import serial
 import time
 import sys

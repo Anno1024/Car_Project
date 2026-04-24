@@ -30,6 +30,15 @@ class Odometry:
         
         self.path.append((round(self.x, 4), round(self.y, 4)))
 
+    def transform_to_global(self, local_dx, local_dy):
+        """
+        将小车坐标系下的偏移(dx, dy)转换为全局地图坐标(GX, GY)
+        """
+        global_x = self.x + local_dx * math.cos(self.theta) - local_dy * math.sin(self.theta)
+        global_y = self.y + local_dx * math.sin(self.theta) + local_dy * math.cos(self.theta)
+        return round(global_x, 4), round(global_y, 4)
+
+
     def save_data(self, filename="map_data.txt"):
         with open(filename, "w") as f:
             for p in self.path:
