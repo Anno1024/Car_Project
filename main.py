@@ -36,17 +36,20 @@ def run():
     map_interval = config.MAP_INTERVAL  # 使用配置的地图记录间隔
     loop_count = 0
     last_print_time = time.time()
+    lost_counter = 0  # 丢线计数器（用于IMU补偿）
 
     try:
+        lost_counter = 0
+        last_error_direction = 0  # 0=无历史, 1=右转, -1=左转
         while True:
             # --- 步骤 1: 视觉感知 ---
             # error 用于控制, cx/cy 用于坐标转换
             error, cx, cy, frame = eye.get_line_data()
-            
             # --- 步骤 2: 决策与执行控制 ---
             # 决策逻辑
             if error is not None:
                 abs_err = abs(error)
+                last_error_direction = 1 if error > 0 else -1
                 
                 if abs_err <= config.SPEED_ZONES['straight']['max_error']:
                     cmd = config.SPEED_ZONES['straight']['cmd']
@@ -64,11 +67,29 @@ def run():
                         else config.SPEED_ZONES['large_turn']['cmd_left']
                 
                 status = "视觉引导"
+            else:
+                # 丢线：根据历史方向最大转向寻线
+                if last_error_direction > 0:
+                    cmd = 'D'
+                    status = "丢线寻线(右转)"
+                elif last_error_direction < 0:
+                    cmd = 'F'
+                    status = "丢线寻线(左转)"
+                else:
+                    cmd = 'A'
+                    status = "丢线寻线(直行试探)"
+                
+                lost_counter += 1
+                if lost_counter > 50:
+                    cmd = 'Z'
+                    status = "丢线超时停车"
+
 
             car.send(cmd)
 
             # --- 步骤 3: 运动学更新 (里程计) ---
             vl, vr = car.get_velocity()
+            #  print(f"vl={vl}, vr={vr}")  # 看速度是不是一直是 0
             odom.update(vl, vr)
 
             # --- 步骤 4: 实时建模 (TF 坐标变换) ---

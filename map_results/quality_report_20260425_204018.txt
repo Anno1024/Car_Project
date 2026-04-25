@@ -1,0 +1,10 @@
+==================================================
+Map Quality Report
+==================================================
+
+Loop closure error: 0.0748 m
+Evaluation: ✅ Excellent - Good loop closure
+
+Map size: 2.0915 m × 0.9833 m
+Map points: 164
+Point density: 79.74 points/m²

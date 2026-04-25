@@ -35,10 +35,10 @@ class Config:
         # ========== 2. 控制参数 ==========
         # 速度档位（根据error范围）
         self.SPEED_ZONES = {
-        'straight': {'max_error': 50, 'cmd': 'A'},           # 直行（偏移<50）
+        'straight': {'max_error': 70, 'cmd': 'A'},           # 直行（偏移<50）
         'micro_turn': {'max_error': 100, 'cmd_right': 'B', 'cmd_left': 'H'},  # 小转/微调（50-100）
         'medium_turn': {'max_error': 200, 'cmd_right': 'C', 'cmd_left': 'G'}, # 中转（100-200）
-        'large_turn': {'cmd_right': 'D', 'cmd_left': 'F'}    # 大转（>200）
+        'large_turn': {'cmd_right': 'D', 'cmd_left': 'F'}    # 大转（>160）
         }
         
         # 丢线时的默认指令

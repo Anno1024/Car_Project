@@ -84,7 +84,9 @@ class CarDriver:
         获取最新的左右轮速度（立即返回，不等待）
         返回: (左轮速度_mm_s, 右轮速度_mm_s)
         """
-        return self.left_speed, self.right_speed
+        SPEED_FACTOR = 11.9 # 实测标定：上报值 × 12 = 实际 mm/s
+        #SPEED_FACTOR = 13.5  # 实测：267.5cm/10s，上报值约20
+        return self.left_speed* SPEED_FACTOR, self.right_speed* SPEED_FACTOR
     
     def get_battery(self):
         """获取电池电量"""

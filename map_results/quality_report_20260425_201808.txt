@@ -1,0 +1,10 @@
+==================================================
+Map Quality Report
+==================================================
+
+Loop closure error: 0.2132 m
+Evaluation: ⚠️ Acceptable - Some drift
+
+Map size: 2.1841 m × 0.6803 m
+Map points: 166
+Point density: 111.72 points/m²
